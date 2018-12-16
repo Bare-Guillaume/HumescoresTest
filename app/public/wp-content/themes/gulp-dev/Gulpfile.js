@@ -1,4 +1,4 @@
-var themename = 'humescores';
+var themename = 'humescores'; //must be the name of the theme folder
 
 var gulp = require('gulp'),
 	// Prepare and optimize code etc
@@ -22,46 +22,46 @@ var gulp = require('gulp'),
 
 
 // CSS via Sass and Autoprefixer
-gulp.task('css', function() {
+gulp.task('css', function () {
 	return gulp.src(scss + '{style.scss,rtl.scss}')
-	.pipe(sourcemaps.init())
-	.pipe(sass({
-		outputStyle: 'expanded', 
-		indentType: 'tab',
-		indentWidth: '1'
-	}).on('error', sass.logError))
-	.pipe(postcss([
-		autoprefixer('last 2 versions', '> 1%')
-	]))
-	.pipe(sourcemaps.write(scss + 'maps'))
-	.pipe(gulp.dest(root));
+		.pipe(sourcemaps.init())
+		.pipe(sass({
+			outputStyle: 'expanded',
+			indentType: 'tab',
+			indentWidth: '1'
+		}).on('error', sass.logError))
+		.pipe(postcss([
+			autoprefixer('last 2 versions', '> 1%')
+		]))
+		.pipe(sourcemaps.write(scss + 'maps'))
+		.pipe(gulp.dest(root));
 });
 
 // Optimize images through gulp-image
-gulp.task('images', function() {
+gulp.task('images', function () {
 	return gulp.src(img + 'RAW/**/*.{jpg,JPG,png}')
-	.pipe(newer(img))
-	.pipe(image())
-	.pipe(gulp.dest(img));
+		.pipe(newer(img))
+		.pipe(image())
+		.pipe(gulp.dest(img));
 });
 
 // JavaScript
-gulp.task('javascript', function() {
+gulp.task('javascript', function () {
 	return gulp.src([js + '*.js'])
-	.pipe(jshint())
-	.pipe(jshint.reporter('default'))
-	.pipe(gulp.dest(js));
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'))
+		.pipe(gulp.dest(js));
 });
 
 
 // Watch everything
-gulp.task('watch', function() {
-	browserSync.init({ 
+gulp.task('watch', function () {
+	browserSync.init({
 		open: 'external',
-		proxy: 'humescores.dev',
+		proxy: 'http://humescores.local/',
 		port: 8080
 	});
-	gulp.watch([root + '**/*.css', root + '**/*.scss' ], ['css']);
+	gulp.watch([root + '**/*.css', root + '**/*.scss'], ['css']);
 	gulp.watch(js + '**/*.js', ['javascript']);
 	gulp.watch(img + 'RAW/**/*.{jpg,JPG,png}', ['images']);
 	gulp.watch(root + '**/*').on('change', browserSync.reload);

@@ -1,6 +1,6 @@
 /*!
 Theme Name: Humescores
-Theme URI: http://underscores.me/
+Theme URI: https://github.com/Bare-Guillaume/HumescoresTest
 Author: Bare Guillaume
 Author URI: http://underscores.me/
 Description: Me Testing Humescores
@@ -33,10 +33,10 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Accessibility
 # Alignments
 # Clearings
-# Widgets
 # Content
 	## Posts and pages
 	## Comments
+# Widgets
 # Infinite scroll
 # Media
 	## Captions
@@ -86,14 +86,16 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "modules/clearings";
 
 /*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+@import "site/site";
+
+/*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
 @import "site/secondary/widgets";
 
-/*--------------------------------------------------------------
-# Content
---------------------------------------------------------------*/
-@import "site/site";
+
 
 /*--------------------------------------------------------------
 # Infinite scroll
